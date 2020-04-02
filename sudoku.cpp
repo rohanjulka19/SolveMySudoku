@@ -38,16 +38,20 @@ class Sudoku {
 		getRange(i, j, s) ;
 		n = s.size() ;
 		cout << n << endl ; 
-		while(s.size() != 0  || isSolved != 0) { 
+		while(s.size() != 0) { 
 			cout <<"INDEX" << index ;
 			mat[i][j] = s.top() ;
 			cout << "Value " << s.top()  << endl ;
 			cout << *this << endl ;
 
 			s.pop();
+			cout << "CALL" << endl;
 			solveUtil(unsolved[index + 1][0], unsolved[index + 1][1], index + 1) ;
+			cout << "NEXT" << endl ;
 			if(isSolved != true)
 				mat[i][j] = 0 ;
+			else
+				break ;
 		}
 		cout << "returning solved" << isSolved << endl ;
 		return ;
@@ -140,11 +144,8 @@ ostream& operator<<(ostream& out, Sudoku s) {
 int main() {
 	Sudoku s ;
 	cin >> s ;
-//	s.getQuadrant();
-	
-	//cout << "SUDOKU" << endl ;
+
 	s.solve() ;
-//	s.setUnsolved() ;
 	cout << "DONE" ;
 	cout << s ;
 
